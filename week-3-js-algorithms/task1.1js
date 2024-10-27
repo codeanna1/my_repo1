@@ -1,0 +1,8 @@
+// Solution
+
+const name = 'Anna'
+const lastname = ' Kardon'
+
+console.log(name + lastname)
+
+

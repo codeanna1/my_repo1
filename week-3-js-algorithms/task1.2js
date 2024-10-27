@@ -1,0 +1,9 @@
+// Solution Task 2
+
+console.log("Anna".length)
+
+// or 
+
+const name = 'anna'
+
+console.log(name.length)

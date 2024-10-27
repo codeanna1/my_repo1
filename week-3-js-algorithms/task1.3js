@@ -1,0 +1,5 @@
+// Solution : Create an “if statement” that checks if 11 is bigger than 7:
+
+if (11>7)  {
+    console.log('11 is bigger')
+}
