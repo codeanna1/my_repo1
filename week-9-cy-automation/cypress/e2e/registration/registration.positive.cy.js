@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker';
-
 import homePage from '../../page_objects/home.page';
 import loginPage from '../../page_objects/login.page';
 import dashboardPage from '../../page_objects/dashboard.page';
@@ -14,7 +13,6 @@ describe('Registration', () => {
     beforeEach(() => {
         cy.visit('/')
     })
-
     it('Should register an account as new user', () => {
         homePage.registrBtn.click();
         registrationPage.firstNameInput.type(userCredentials.firstName);
@@ -22,16 +20,12 @@ describe('Registration', () => {
         registrationPage.emailInput.type(email);
         registrationPage.passwordInput.type(password);
         registrationPage.submitBtn.click();
-        // Verify user role, name
         dashboardPage.roleLabel.should('have.text',verificationText.role);
         dashboardPage.fullNameLabel.should('have.text',verificationText.fullName2);
-        // Logout
         dashboardPage.userIconBtn.click();
         dashboardPage.logoutBtn.click();
-        // Log in
         loginPage.loginBtn.click();
         loginPage.login(email, password);
-        // Verify user role, name
         dashboardPage.roleLabel.should('have.text', verificationText.role);
         dashboardPage.fullNameLabel.should('have.text', verificationText.fullName2);
     })

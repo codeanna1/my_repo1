@@ -1,9 +1,3 @@
-//Should search by keyword (assertion should check listing item on the listing page)
-//Should search by bedrooms  (assertion should check listing item on the listing page)
-//Should search by city(create your listing with a unique city) (assertion should check all details for listing item upon clicking “More Info“)
-//Should search by price
-//Should navigate to the listing details page upon click "More Info"
-
 import searchPage from "../../page_objects/search.page";
 import homePage from "../../page_objects/home.page";
 import verificationText from "../../fixtures/testData/verificationText.json";
@@ -18,7 +12,6 @@ beforeEach(() => {
    cy.visit("/")
    homePage.darkMode.click();
    homePage.FeaturedListing.click();
-
 });
    it('Should search by keyword', ()  => {
       cy.get('[id=":r5:"]').click().type(verificationText.listingName);
@@ -34,7 +27,7 @@ beforeEach(() => {
       cy.get(".MuiGrid-root").contains("Bedrooms:").invoke("text").then((text) => parseInt(text.replace(/\D/g, ""), 10)).should("be.at.least", 2);
       
    });  
-     
+
    it('Should search by city', () => {
       searchPage.searchCityListing.click().type(verificationText.city );
       searchPage.searchButton.click();
@@ -55,13 +48,6 @@ beforeEach(() => {
       cy.get('div:nth-of-type(1)[class*="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6"]').contains(verificationText.homePrice);
     })
 });
-   
-
-
-
-
-
-   
 
 
 

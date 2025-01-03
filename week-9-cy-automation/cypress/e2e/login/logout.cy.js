@@ -7,22 +7,21 @@ import verificationText from "../../fixtures/testData/verificationText.json";
 describe('Logout', () => {
     beforeEach(() => {
         cy.visit("/")
-        //api login
-    })
-
+        cy.request('POST', '/api/users/login', {"email": userCredentials.email,
+            "password": userCredentials.password }).then(
+              (response) => {
+                window.localStorage.setItem("accessToken", response.body.accessToken);
+    });
+});
     it('Should log in with existing account as user', () => {
-        // Click login button on homepage
         homePage.loginBtn.click();
         loginPage.emailInput.type(userCredentials.email);
         loginPage.passwordInput.type(userCredentials.password);
         loginPage.loginBtn.click();
-        // Verify user role
         dashboardPage.roleLabel.should('have.text', verificationText.role)
         dashboardPage.fullNameLabel.should('have.text', verificationText.fullName)
-        // Logout
         dashboardPage.userIconBtn.click();
         dashboardPage.logoutBtn.click();
-
+        cy.contains("Sign in to Delek Homes").should("be.visible");
     })
 })
-  

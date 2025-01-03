@@ -15,19 +15,14 @@ describe('Login', () => {
   beforeEach(() => {
     cy.visit('/')
   })
-
   it('Should log in with existing account as user', () => {
-
     homePage.loginBtn.click();
     loginPage.emailInput.type(user.email);
     loginPage.passwordInput.type(user.password);
     loginPage.loginBtn.click();
-    // Verify user role
     dashboardPage.roleLabel.should('have.text', verificationText.role)
     dashboardPage.fullNameLabel.should('have.text', verificationText.fullName)
-
   })
-
 })
 
 

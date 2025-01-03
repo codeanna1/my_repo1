@@ -9,13 +9,11 @@ class SearchPage {
     get FeaturedBedrooms(){return cy.get ('[id=":r6:"]')};
     get FeaturedCitySearch(){return cy.get('[id=":r8:"]')}   
     get moreInfoBtn() { return cy.get(".MuiBox-root.css-xi606m")}
-    
+    selectBedroomFilter(bedroomNumber) {
+        this.bedroomButton.click();
+        cy.contains(bedroomNumber).click();}
+        searchByKeyword(keyword) {
+            this.searchIcon.click().type(keyword);
+            this.searchButton.click();}
     }
     export default new SearchPage();
-
-
-    
-   
-
-
-   
